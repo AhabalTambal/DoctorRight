@@ -45,16 +45,6 @@ def delete_old_videos(to_delete_urls):
         # confirm deletion
         driver.find_element_by_class_name('vm-video-actions-delete-button-confirm').click()
 
-        pass
-
-    copyrights = wait.until(
-        lambda driver: driver.find_elements_by_class_name('vm-video-side-notification-text-item'))
-    to_delete_copyrights = filter(
-        lambda copyright: copyright.find_element_by_tag_name('a').get_attribute('href') in to_delete_urls, copyrights)
-    pass
-
-
-
 def solve_problem(copyright_urls):
     for copyright_url in copyright_urls:
         driver.get(copyright_url)
@@ -127,8 +117,8 @@ if __name__ == '__main__':
         driver = webdriver.Chrome()
         wait = ui.WebDriverWait(driver, timeout=300)
         driver.get(links.video_manager)
-        youtube_enter_creds('spammeallday8', 'Omer6789')
-        choose_channel('The Blue Pill')
+        youtube_enter_creds('spammeallday7', 'Omer5678')
+        choose_channel('SdarotIL')
 
         try:
             copyrights = wait.until(
