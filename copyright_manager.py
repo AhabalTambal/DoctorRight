@@ -121,8 +121,15 @@ if __name__ == '__main__':
     try:
         # options = webdriver.ChromeOptions()
         # options.add_argument("user-data-dir=C:\Users\omer\AppData\Local\Google\Chrome\User Data\Default")
-        driver, wait = init_driver()
+        # driver, wait = init_driver()
         # while True:
+
+        driver = webdriver.Chrome()
+        wait = ui.WebDriverWait(driver, timeout=300)
+        driver.get(links.video_manager)
+        youtube_enter_creds('spammeallday8', 'Omer6789')
+        choose_channel('The Blue Pill')
+
         try:
             copyrights = wait.until(
                 lambda driver: driver.find_elements_by_class_name('vm-video-side-notification-text-item'))
