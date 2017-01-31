@@ -4,7 +4,7 @@ from selenium.common.exceptions import *
 from selenium import *
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
-
+from bs4 import BeautifulSoup
 import time
 
 
@@ -24,6 +24,8 @@ REMOVE_MUSIC_TOKEN = u'\u05d4\u05e1\u05e8 \u05d0\u05ea \u05d4\u05e9\u05d9\u05e8'
 def delete_old_videos(to_delete_urls):
     click_counter = 0
     driver.get(links.video_manager)
+    time.sleep(5)
+
     videos = driver.find_elements_by_class_name('vm-video-item-content')
     for video in videos:
         try:
@@ -37,11 +39,13 @@ def delete_old_videos(to_delete_urls):
     if click_counter > 0:
         # click on action button
         driver.find_elements_by_class_name('vm-video-list-action-menu')[1].click()
+        driver.save_screenshot('lol.jpg')
 
         # click the delete action
         filter(lambda label: label.text.lower() == 'Delete'.lower(),
                driver.find_elements_by_class_name('yt-ui-menu-item-label'))[0].click()
 
+        driver.save_screenshot('lol1.jpg')
         # confirm deletion
         driver.find_element_by_class_name('vm-video-actions-delete-button-confirm').click()
 
@@ -54,6 +58,7 @@ def solve_problem(copyright_urls):
                 main_window = driver.current_window_handle
                 link = option.find_element_by_tag_name('a')
                 link.click()
+                time.sleep(5)
 
                 # Switch focus to the new opening tab
                 remove_song_window = driver.window_handles[1]
@@ -117,7 +122,7 @@ if __name__ == '__main__':
         driver = webdriver.Chrome()
         wait = ui.WebDriverWait(driver, timeout=300)
         driver.get(links.video_manager)
-        youtube_enter_creds('spammeallday7', 'Omer5678')
+        youtube_enter_creds('spammeallday8', 'Omer6789')
         choose_channel('SdarotIL')
 
         try:
